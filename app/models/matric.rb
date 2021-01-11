@@ -1,2 +1,0 @@
-class Matric < ApplicationRecord
-end
