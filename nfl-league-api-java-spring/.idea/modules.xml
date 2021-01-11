@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/nfl-league-api/nfl-league-api.iml" filepath="$PROJECT_DIR$/nfl-league-api/nfl-league-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/nfl-league-api-java-spring.iml" filepath="$PROJECT_DIR$/.idea/nfl-league-api-java-spring.iml" />
     </modules>
   </component>
