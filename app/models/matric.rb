@@ -1,0 +1,2 @@
+class Matric < ApplicationRecord
+end
