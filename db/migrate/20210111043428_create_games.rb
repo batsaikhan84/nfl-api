@@ -1,10 +1,10 @@
 class CreateGames < ActiveRecord::Migration[6.0]
   def change
     create_table :games do |t|
-      t.string :home-team
-      t.string :away-team
+      t.string :home_team
+      t.string :away_team
       t.string :season
-      t.string :season-type
+      t.string :season_type
       t.string :location
       t.string :week
       t.string :startTime

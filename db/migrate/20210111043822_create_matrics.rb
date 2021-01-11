@@ -4,8 +4,8 @@ class CreateMatrics < ActiveRecord::Migration[6.0]
       t.string :like
       t.string :retweet
       t.string :impression
-      t.string :new-follower
-      t.string :tweet-id
+      t.string :new_follower
+      t.string :tweet_id
 
       t.timestamps
     end
