@@ -2,7 +2,6 @@ import { TeamService } from './../../services/team.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Team } from '../../Models/team.model'
-import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-teams',
@@ -15,9 +14,6 @@ export class TeamsComponent implements OnInit {
   ngOnInit(): void {
     this.teamService.fetchTeam().subscribe(response => response)
   }
-
-  baseURL = "http://localhost:3000/teams"
-
   onFetchTeams() {
     this.teamService.fetchTeam()
   }
