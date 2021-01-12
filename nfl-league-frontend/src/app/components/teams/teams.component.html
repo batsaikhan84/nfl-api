@@ -1,1 +1,28 @@
-<p>teams works!</p>
+<div class="container-fluid border border-dark">
+    <div class="row" style="height: 720px;">
+      <div class="col-4 border border-dark">
+        <h3>Team Form</h3>
+        <form #teamForm = "ngForm" (ngSubmit) = "onCreateTeam(teamForm.value)">
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="name" ngModel name="name">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="confrence" ngModel name="confrence">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="city" ngModel name="city">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      <div class="col-8 border border-dark">
+        2 of 2
+      </div>
+
+    </div>
+  </div>
+
+
+
+
