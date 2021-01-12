@@ -17,7 +17,28 @@
 
       </div>
       <div class="col-8 border border-dark">
-        2 of 2
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Conference</th>
+              <th scope="col">City</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let team of loadedTeams">
+              <td>{{ team.id }}</td>
+              <td>{{ team.name }}</td>
+              <td>{{ team.conference }}</td>
+              <td>{{ team.city }}</td>
+              <td>
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
