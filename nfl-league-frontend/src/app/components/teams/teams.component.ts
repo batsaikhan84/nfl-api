@@ -22,6 +22,6 @@ export class TeamsComponent implements OnInit {
     this.teamService.fetchTeam()
   }
   onCreateTeam(teamData: Team) {
-      this.teamService.createTeam(teamData.name, teamData.conference, teamData.city).subscribe(response => response)
+      this.teamService.createTeam(teamData.name, teamData.conference, teamData.city)
   }
 }
