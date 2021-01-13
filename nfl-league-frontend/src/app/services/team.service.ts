@@ -19,15 +19,14 @@ export class TeamService {
   }
   createTeam(name: String, conference: String, city: String) {
     const teamData: Team = {name: name, conference: conference, city: city}
-    console.log(teamData)
-    this.http.post(this.baseURL, teamData).subscribe(response => console.log(response))
+    return this.http.post(this.baseURL, teamData)
   }
   updateTeam(id: number, name: String, conference: String, city: String) {
     const teamData: Team = {name: name, conference: conference, city: city}
     this.http.put(`${this.baseURL}/${id}`, teamData)
   }
   deleteTeamById(id: number) {
-    this.http.delete(`${this.baseURL}/${id}`).subscribe(response => console.log(response))
+    return this.http.delete(`${this.baseURL}/${id}`)
   }
   
 }

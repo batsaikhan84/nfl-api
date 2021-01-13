@@ -1,8 +1,7 @@
-import { map } from 'rxjs/operators';
+import { Team } from './../../Models/team.model';
 import { TeamService } from './../../services/team.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Team } from '../../Models/team.model'
 
 @Component({
   selector: 'app-teams',
@@ -11,6 +10,7 @@ import { Team } from '../../Models/team.model'
 })
 export class TeamsComponent implements OnInit {
   loadedTeams: Team[] = []
+  loadedTeam: any
   constructor(private http: HttpClient, private teamService: TeamService) { }
 
   ngOnInit(): void {
@@ -20,10 +20,12 @@ export class TeamsComponent implements OnInit {
     this.teamService.fetchTeam().subscribe(response => this.loadedTeams = response)
   }
   onCreateTeam(teamData: Team) {
-      this.teamService.createTeam(teamData.name, teamData.conference, teamData.city)
-      this.loadTeams()
+      this.teamService.createTeam(teamData.name, teamData.conference, teamData.city).subscribe(response => {console.log(response), this.loadTeams()})
   }
-  deleteTeam(id: number) {
-    this.teamService.deleteTeamById(id)
+  deleteTeam(id: any) {
+    this.teamService.deleteTeamById(id).subscribe(response => {console.log(response), this.loadTeams()})
+  }
+  loadTeamById(id: any) {
+    this.teamService.fetchTeamByID(id).subscribe(response => {this.loadedTeam = response, console.log(response)})
   }
 }

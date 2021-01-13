@@ -1,7 +1,7 @@
 <div class="container-fluid border border-dark">
     <div class="row" style="height: 720px;">
       <div class="col-4 border border-dark">
-        <h3>Team Form</h3>
+        <h3>Team Add and Update Form</h3>
         <form #teamForm = "ngForm" (ngSubmit) = "onCreateTeam(teamForm.value)">
             <div class="mb-3">
                 <input class="form-control" type="text" placeholder="name" ngModel name="name">
@@ -30,7 +30,8 @@
           <tbody>
             <tr *ngFor = "let team of loadedTeams">
               <td>{{ team.id }}</td>
-              <td>{{ team.name }}</td>
+              <td><button type="button" class="btn btn-light" (click)="loadTeamById(team.id)">{{ team.name }}</button></td>
+              <!-- <td><a href="#" class="nav-link" (click)="loadTeamById(team.id)">{{ team.name }}</a></td> -->
               <td>{{ team.conference }}</td>
               <td>{{ team.city }}</td>
               <td>
@@ -39,9 +40,15 @@
             </tr>
           </tbody>
         </table>
+        <div class="card" style="width: 18rem;">
+          <ul>
+            <li>{{ teamInfo.name }}</li>
+          </ul>
+        </div>
       </div>
 
     </div>
+    
   </div>
 
 

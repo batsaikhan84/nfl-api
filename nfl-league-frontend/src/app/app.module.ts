@@ -8,13 +8,15 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { TeamDetailComponent } from './components/team-detail/team-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamsComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    TeamDetailComponent
   ],
   imports: [
     BrowserModule,
