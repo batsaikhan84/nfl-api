@@ -32,7 +32,7 @@ public class TeamController {
         Team team = teamRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Team not found by ID: " + id));
         return ResponseEntity.ok().body(team);
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/teams")
     public Team addTeam(@RequestBody Team team) {
         return teamRepository.save(team);

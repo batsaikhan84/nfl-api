@@ -14,12 +14,16 @@ export class TeamsComponent implements OnInit {
   constructor(private http: HttpClient, private teamService: TeamService) { }
 
   ngOnInit(): void {
-    this.teamService.fetchTeam().subscribe(response => this.loadedTeams = response)
+    this.loadTeams()
   }
-  onFetchTeams() {
-    this.teamService.fetchTeam().subscribe(response => console.log(response))
+  loadTeams() {
+    this.teamService.fetchTeam().subscribe(response => this.loadedTeams = response)
   }
   onCreateTeam(teamData: Team) {
       this.teamService.createTeam(teamData.name, teamData.conference, teamData.city)
+      this.loadTeams()
+  }
+  deleteTeam(id: number) {
+    this.teamService.deleteTeamById(id)
   }
 }

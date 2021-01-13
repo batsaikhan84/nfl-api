@@ -7,7 +7,7 @@
                 <input class="form-control" type="text" placeholder="name" ngModel name="name">
             </div>
             <div class="mb-3">
-                <input class="form-control" type="text" placeholder="confrence" ngModel name="confrence">
+                <input class="form-control" type="text" placeholder="conference" ngModel name="conference">
             </div>
             <div class="mb-3">
                 <input class="form-control" type="text" placeholder="city" ngModel name="city">
@@ -34,7 +34,7 @@
               <td>{{ team.conference }}</td>
               <td>{{ team.city }}</td>
               <td>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger" (click) = "deleteTeam(team.id)">Delete</button>
               </td>
             </tr>
           </tbody>
