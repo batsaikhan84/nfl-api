@@ -1,8 +1,8 @@
 export interface Team {
-    id?: number;
+    id: number;
     name: String;
     conference: String;
     city: String;
-    created_at?: String;
-    updated_at?: String;
+    created_at: String;
+    updated_at: String;
 }

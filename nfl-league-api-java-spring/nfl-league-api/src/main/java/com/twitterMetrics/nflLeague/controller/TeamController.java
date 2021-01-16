@@ -4,8 +4,6 @@ import com.twitterMetrics.nflLeague.exception.RecordNotFoundException;
 import com.twitterMetrics.nflLeague.model.Team;
 import com.twitterMetrics.nflLeague.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,26 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TeamController {
     @Autowired
     private TeamRepository teamRepository;
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/teams")
     public List<Team> getTeams() {
         return teamRepository.findAll();
     }
-//    public Page<Team> getTeams(Pageable pageable) {
-//        return teamRepository.findAll(pageable);
-//    }
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/teams/{id}")
     public ResponseEntity<Team> getTeam(@PathVariable(value = "id") long id) throws RecordNotFoundException {
         Team team = teamRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Team not found by ID: " + id));
         return ResponseEntity.ok().body(team);
     }
-//    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/teams")
     public Team addTeam(@RequestBody Team team) {
         return teamRepository.save(team);
@@ -47,7 +39,6 @@ public class TeamController {
         final Team updateTeam = teamRepository.save(team);
         return ResponseEntity.ok(updateTeam);
     }
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/teams/{id}")
     public Map<String, Boolean> deleteTeam(@PathVariable(value = "id") long id) throws RecordNotFoundException {
         Team team = teamRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Team not found by ID: " + id));

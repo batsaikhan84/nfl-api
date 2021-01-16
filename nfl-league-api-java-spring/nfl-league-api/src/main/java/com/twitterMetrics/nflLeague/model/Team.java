@@ -12,6 +12,9 @@ public class Team extends AuditModel {
     private String conference;
     @Column(name = "city", nullable = false)
     private String city;
+    @ManyToOne
+    @JoinColumn(name = "season_id")
+    private Season season;
 
     public Long getId() {
         return id;
@@ -43,5 +46,13 @@ public class Team extends AuditModel {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
     }
 }
