@@ -10,7 +10,7 @@ public class Season {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "year", nullable = false, unique = true)
-    private String season;
+    private String year;
     @Column(name = "seasonType", nullable = false)
     private String seasonType;
     @OneToMany( mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -19,14 +19,14 @@ public class Season {
     public Long getId() {
         return id;
     }
-    public String getSeason() {
-        return season;
+    public String getYear() {
+        return year;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    public void setSeason(String season) {
-        this.season = season;
+    public void setYear(String season) {
+        this.year = season;
     }
     public String getSeasonType() {
         return seasonType;
