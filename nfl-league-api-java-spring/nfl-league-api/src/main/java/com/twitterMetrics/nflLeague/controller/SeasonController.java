@@ -33,5 +33,12 @@ public class SeasonController {
         final Season updateSeason = seasonRepository.save(season);
         return ResponseEntity.ok(updateSeason);
     }
-
+    @DeleteMapping("/seasons/{id}")
+    public Map<String, Boolean> deleteSeason(@PathVariable(value = "id") Long id) throws RecordNotFoundException {
+        Season season = seasonRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("record is not found by id:" + id));
+        seasonRepository.delete(season);
+        Map<String, Boolean> deletedSeason = new HashMap<>();
+        deletedSeason.put("deleted", Boolean.TRUE);
+        return deletedSeason;
+    }
 }
