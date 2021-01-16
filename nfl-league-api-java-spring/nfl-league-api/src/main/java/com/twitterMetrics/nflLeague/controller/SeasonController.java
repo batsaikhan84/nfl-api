@@ -25,5 +25,13 @@ public class SeasonController {
     }
     @PostMapping("/seasons")
     public Season createSeason(@RequestBody Season season) { return seasonRepository.save(season); }
+    @PutMapping("/seasons/{id}")
+    public ResponseEntity<Season> updateSeason(@PathVariable(value = "id") Long id, @RequestBody Season seasonDetails) throws RecordNotFoundException {
+        Season season = seasonRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("record is not found by id:" + id));
+        season.setYear(seasonDetails.getYear());
+        season.setSeasonType(seasonDetails.getYear());
+        final Season updateSeason = seasonRepository.save(season);
+        return ResponseEntity.ok(updateSeason);
+    }
 
 }
