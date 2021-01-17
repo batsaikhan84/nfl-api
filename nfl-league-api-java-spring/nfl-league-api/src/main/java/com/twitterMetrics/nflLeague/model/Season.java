@@ -1,8 +1,7 @@
 package com.twitterMetrics.nflLeague.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Season {
@@ -11,10 +10,8 @@ public class Season {
     private Long id;
     @Column(name = "year", nullable = false, unique = true)
     private String year;
-    @Column(name = "seasonType", nullable = false)
-    private String seasonType;
-    @OneToMany( mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Team> teamList = new ArrayList<>();
+    @OneToMany( mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Game> gameList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -28,18 +25,12 @@ public class Season {
     public void setYear(String season) {
         this.year = season;
     }
-    public String getSeasonType() {
-        return seasonType;
-    }
-    public void setSeasonType(String seasonType) {
-        this.seasonType = seasonType;
+
+    public List<Game> getGameList() {
+        return gameList;
     }
 
-    public List<Team> getTeamList() {
-        return teamList;
-    }
-
-    public void setTeamList(List<Team> teamList) {
-        this.teamList = teamList;
+    public void setGameList(List<Game> gameList) {
+        this.gameList = gameList;
     }
 }

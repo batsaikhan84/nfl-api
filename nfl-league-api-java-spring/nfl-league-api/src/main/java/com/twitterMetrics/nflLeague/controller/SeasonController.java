@@ -4,7 +4,6 @@ import com.twitterMetrics.nflLeague.exception.RecordNotFoundException;
 import com.twitterMetrics.nflLeague.model.Season;
 import com.twitterMetrics.nflLeague.repository.SeasonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +28,6 @@ public class SeasonController {
     public ResponseEntity<Season> updateSeason(@PathVariable(value = "id") Long id, @RequestBody Season seasonDetails) throws RecordNotFoundException {
         Season season = seasonRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("record is not found by id:" + id));
         season.setYear(seasonDetails.getYear());
-        season.setSeasonType(seasonDetails.getYear());
         final Season updateSeason = seasonRepository.save(season);
         return ResponseEntity.ok(updateSeason);
     }
