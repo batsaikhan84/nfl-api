@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Season {
+public class Season extends AuditModel{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "year", nullable = false, unique = true)
     private String year;
-    @OneToMany( mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Game> gameList = new ArrayList<>();
+    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Game> games = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -26,11 +26,11 @@ public class Season {
         this.year = season;
     }
 
-    public List<Game> getGameList() {
-        return gameList;
+    public List<Game> getGames() {
+        return games;
     }
 
-    public void setGameList(List<Game> gameList) {
-        this.gameList = gameList;
+    public void setGames(List<Game> games) {
+        this.games = games;
     }
 }
