@@ -1,30 +1,38 @@
 package com.twitterMetrics.nflLeague.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
 
 @Entity
-public class Game {
+public class Game extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "gameDate")
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     private Date gameDate;
     @Column(name = "location")
     private String location;
     @Column(name = "week")
-    private Number week;
+    private Integer week;
     @Column(name = "seasonType")
     private String seasonType;
     @Column(name = "isHomeGame")
     private HomeAwayGame isHomeGame;
-    @ManyToOne
-    @JoinColumn(name = "season_id")
+//    @ManyToOne
+//    @JoinColumn(name = "season_id")
+//    private Season season;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "season_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Season season;
-    @OneToMany( mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Game> teamList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -50,11 +58,11 @@ public class Game {
         this.location = location;
     }
 
-    public Number getWeek() {
+    public Integer getWeek() {
         return week;
     }
 
-    public void setWeek(Number week) {
+    public void setWeek(Integer week) {
         this.week = week;
     }
 
@@ -80,13 +88,5 @@ public class Game {
 
     public void setSeason(Season season) {
         this.season = season;
-    }
-
-    public List<Game> getTeamList() {
-        return teamList;
-    }
-
-    public void setTeamList(List<Game> teamList) {
-        this.teamList = teamList;
     }
 }
