@@ -18,8 +18,8 @@ public class GameController {
     private GameRepository gameRepository;
     @Autowired
     private SeasonRepository seasonRepository;
-    @GetMapping("/season/{seasonId}/games")
-    public List<Game> getGames(@PathVariable(value = "id") Long id) {
+    @GetMapping("/seasons/{seasonId}/games")
+    public List<Game> getGames(@PathVariable(value = "seasonId") Long seasonId) {
         return gameRepository.findAll();
     }
     @GetMapping("/seasons/{seasonId}/games/{gameId}")
@@ -31,7 +31,7 @@ public class GameController {
                 map(game -> ResponseEntity.ok().body(game)).
                 orElseThrow(() -> new RecordNotFoundException("record not found by id: " + seasonId));
     }
-    @PostMapping("/season/{seasonId}/games")
+    @PostMapping("/seasons/{seasonId}/games")
     public Game createGame(@PathVariable(value = "seasonId") Long seasonId, @RequestBody Game game) {
         return seasonRepository.findById(seasonId).map(season -> {
             game.setSeason(season);
