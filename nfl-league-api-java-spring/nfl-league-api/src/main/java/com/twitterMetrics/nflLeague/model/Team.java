@@ -12,9 +12,9 @@ public class Team extends AuditModel {
     private String conference;
     @Column(name = "city", nullable = false)
     private String city;
-    @ManyToOne
-    @JoinColumn(name = "game_id")
-    private Game game;
+//    @ManyToOne
+//    @JoinColumn(name = "game_id")
+//    private Game game;
 
     public Long getId() {
         return id;
@@ -48,11 +48,11 @@ public class Team extends AuditModel {
         this.city = city;
     }
 
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
+//    public Game getGame() {
+//        return game;
+//    }
+//
+//    public void setGame(Game game) {
+//        this.game = game;
+//    }
 }
